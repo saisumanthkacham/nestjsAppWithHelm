@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nest-app-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nest-server-app
+  template:
+    metadata:
+      labels:
+        app: nest-server-app
+    spec:
+      containers:
+      - image: backend
+        name: nest-container
+        imagePullPolicy: IfNotPresent
